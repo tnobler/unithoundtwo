@@ -11,37 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
+  <div class="mb-6">
+    <%= form.label :number, class: "label" %>
+    <%= form.text_field :number, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :sqft %>
-    <%= form.number_field :sqft %>
+  <div class="mb-6">
+    <%= form.label :sqft, class: "label" %>
+    <%= form.number_field :sqft, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :beds %>
-    <%= form.text_field :beds %>
+  <div class="mb-6">
+    <%= form.label :beds, class: "label" %>
+    <%= form.text_field :beds, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :baths %>
-    <%= form.text_field :baths %>
+  <div class="mb-6">
+    <%= form.label :baths, class: "label" %>
+    <%= form.text_field :baths, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :floor_plan %>
-    <%= form.text_field :floor_plan %>
-  </div>
-
-  <div class="field">
-    <%= form.label :property_id %>
-    <%= form.text_field :property_id %>
+  <div class="mb-6">
+    <%= form.label :floor_plan, class: "label" %>
+    <%= form.text_field :floor_plan, class: "input" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-default" %>
   </div>
 <% end %>

@@ -11,72 +11,71 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="flex">
+    <div class="flex-1 mb-6">
+      <%= form.label :name, class: "label" %>
+      <%= form.text_field :name, class: "input" %>
+    </div>
+
+    <div class="flex-1 mb-6">
+      <%= form.label :street_address, class: "label" %>
+      <%= form.text_field :street_address, class: "input" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :street_address %>
-    <%= form.text_field :street_address %>
+  <div class="flex">
+    <div class="w-3/12 mb-6">
+      <%= form.label :city, class: "label" %>
+      <%= form.text_field :city, class: "input" %>
+    </div>
+
+    <div class="w-1/12 mb-6">
+      <%= form.label :state, class: "label" %>
+      <%= form.text_field :state, class: "input" %>
+    </div>
+
+    <div class="w-2/12 mb-6">
+      <%= form.label :zipcode, class: "label" %>
+      <%= form.number_field :zipcode, class: "input" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <div class="mb-6">
+    <%= form.label :unit_count, class: "label" %>
+    <%= form.number_field :unit_count, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
+  <div class="mb-6">
+    <%= form.label :year_built, class: "label" %>
+    <%= form.number_field :year_built, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :zipcode %>
-    <%= form.number_field :zipcode %>
+  <div class="mb-6">
+    <%= form.label :status, class: "label" %>
+    <%= form.text_field :status, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :unit_count %>
-    <%= form.number_field :unit_count %>
+  <div class="mb-6">
+    <%= form.label :asking_price, class: "label" %>
+    <%= form.text_field :asking_price, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :year_built %>
-    <%= form.number_field :year_built %>
+  <div class="mb-6">
+    <%= form.label :purchase_price, class: "label" %>
+    <%= form.text_field :purchase_price, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
+  <div class="mb-6">
+    <%= form.label :ae_flood_zone, class: "label" %>
+    <%= form.check_box :ae_flood_zone, class: "checkbox" %>
   </div>
 
-  <div class="field">
-    <%= form.label :asking_price %>
-    <%= form.text_field :asking_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :purchase_price %>
-    <%= form.text_field :purchase_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ae_flood_zone %>
-    <%= form.check_box :ae_flood_zone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_area :notes %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="mb-6">
+    <%= form.label :notes, class: "label" %>
+    <%= form.text_area :notes, class: "input" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-default" %>
   </div>
 <% end %>
