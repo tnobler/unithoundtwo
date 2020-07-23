@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  sqft: 1
+  beds: MyString
+  baths: MyString
+  floor_plan: MyString
+  property: one
+
+two:
+  number: MyString
+  sqft: 1
+  beds: MyString
+  baths: MyString
+  floor_plan: MyString
+  property: two

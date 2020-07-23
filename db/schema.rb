@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_155900) do
+ActiveRecord::Schema.define(version: 2020_07_23_191357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budget_item_lists", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "budget_items", force: :cascade do |t|
+    t.string "qty"
+    t.bigint "budget_item_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["budget_item_id"], name: "index_budget_items_on_budget_item_id"
+    t.index ["product_id"], name: "index_budget_items_on_product_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -24,6 +45,58 @@ ActiveRecord::Schema.define(version: 2020_07_23_155900) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "unit"
+    t.decimal "price"
+    t.string "vendor"
+    t.text "description"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "name"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.integer "zipcode"
+    t.integer "unit_count"
+    t.integer "year_built"
+    t.string "status"
+    t.decimal "asking_price"
+    t.decimal "purchase_price"
+    t.boolean "ae_flood_zone", default: false
+    t.text "notes"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_properties_on_user_id"
+  end
+
+  create_table "property_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "property_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_property_users_on_property_id"
+    t.index ["user_id"], name: "index_property_users_on_user_id"
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "number"
+    t.integer "sqft"
+    t.string "beds"
+    t.string "baths"
+    t.string "floor_plan"
+    t.bigint "property_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_units_on_property_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,8 +110,19 @@ ActiveRecord::Schema.define(version: 2020_07_23_155900) do
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confrimation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "budget_items", "budget_items"
+  add_foreign_key "budget_items", "products"
+  add_foreign_key "products", "categories"
+  add_foreign_key "properties", "users"
+  add_foreign_key "property_users", "properties"
+  add_foreign_key "property_users", "users"
+  add_foreign_key "units", "properties"
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qty: MyString
+  budget_item: one
+  product: one
+
+two:
+  qty: MyString
+  budget_item: two
+  product: two
