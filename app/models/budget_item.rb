@@ -1,4 +1,5 @@
 class BudgetItem < ApplicationRecord
-  belongs_to :budget_item
-  belongs_to :product
+  # belongs_to :product
+  has_one :product
+  belongs_to :unit
 end

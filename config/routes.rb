@@ -1,11 +1,12 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :budget_items
   resources :products
   resources :budget_item_lists
   resources :properties do
-    resources :units
+    resources :units do 
+      resources :budget_items
+    end
   end
 
   authenticate :user, lambda { |u| u.admin? } do

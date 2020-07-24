@@ -1,14 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<h1 class="mb-6 text-3xl font-bold">Properties</h1>
-
 <div class="grid grid-cols-12 gap-6 mb-10">
-  <% @properties.each do |property| %>
+  <% @poperty.units.each do |unit| %>
     <div class="col-span-12 p-6 border rounded shadow lg:col-span-3">
-      <%= link_to property, class: "block" do %>
-        <h3 class="text-lg font-bold"><%= property.name %></h3>
-        <p class="mb-1 leading-snug text-gray-600"><%= property.city %>, <%= property.state %> </p>
-        <p class="leading-snug text-gray-600"><%= property.unit_count %> Units </p>
+      <%= link_to unit, class: "block" do %>
+        <h3 class="text-lg font-bold"><%= unit.number %></h3>
+        <p class="mb-1 leading-snug text-gray-600"><%= unit.sqft %> </p>
+        <p class="leading-snug text-gray-600"><%= unit.beds %> Beds </p>
         <p class="leading-snug text-gray-600">YOC: <%= property.year_built %></p>
         
         <p class="leading-snug text-gray-600">
@@ -26,13 +22,4 @@
       <% end %>
     </div>
   <% end %>
-</div>
-
-
-
-  
-
-<br>
-<div class="my-4">
-  <%= link_to 'New Property', new_property_path, class: "btn btn-default" %>
 </div>

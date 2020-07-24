@@ -1,4 +1,4 @@
-<%= form_with(model: unit, local: true) do |form| %>
+<%= form_with(model: [@property, unit], local: true) do |form| %>
   <% if unit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
@@ -12,27 +12,27 @@
   <% end %>
 
   <div class="mb-6">
-    <%= form.label :number, class: "label" %>
+    <%= form.label :number, "Unit Number", class: "label" %>
     <%= form.text_field :number, class: "input" %>
   </div>
 
   <div class="mb-6">
-    <%= form.label :sqft, class: "label" %>
+    <%= form.label :sqft, "Square Feet", class: "label" %>
     <%= form.number_field :sqft, class: "input" %>
   </div>
 
   <div class="mb-6">
-    <%= form.label :beds, class: "label" %>
+    <%= form.label :beds, "# of Bedrooms", class: "label" %>
     <%= form.text_field :beds, class: "input" %>
   </div>
 
   <div class="mb-6">
-    <%= form.label :baths, class: "label" %>
+    <%= form.label :baths, "# of Bathrooms", class: "label" %>
     <%= form.text_field :baths, class: "input" %>
   </div>
 
   <div class="mb-6">
-    <%= form.label :floor_plan, class: "label" %>
+    <%= form.label :floor_plan, "Floor Plan", class: "label" %>
     <%= form.text_field :floor_plan, class: "input" %>
   </div>
 

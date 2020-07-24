@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_200347) do
+ActiveRecord::Schema.define(version: 2020_07_24_220049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,16 @@ ActiveRecord::Schema.define(version: 2020_07_23_200347) do
 
   create_table "budget_items", force: :cascade do |t|
     t.string "qty"
-    t.bigint "budget_item_id", null: false
-    t.bigint "product_id", null: false
+    t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["budget_item_id"], name: "index_budget_items_on_budget_item_id"
+    t.boolean "complete", default: false
+    t.bigint "unit_id", null: false
+    t.string "product"
+    t.bigint "property_id"
     t.index ["product_id"], name: "index_budget_items_on_product_id"
+    t.index ["property_id"], name: "index_budget_items_on_property_id"
+    t.index ["unit_id"], name: "index_budget_items_on_unit_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -118,8 +122,9 @@ ActiveRecord::Schema.define(version: 2020_07_23_200347) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "budget_items", "budget_items"
   add_foreign_key "budget_items", "products"
+  add_foreign_key "budget_items", "properties"
+  add_foreign_key "budget_items", "units"
   add_foreign_key "products", "categories"
   add_foreign_key "properties", "users"
   add_foreign_key "property_users", "properties"

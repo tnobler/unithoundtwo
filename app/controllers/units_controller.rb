@@ -1,5 +1,6 @@
 class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  before_action :set_property
   before_action :authenticate_user!
 
   # GET /units
@@ -11,6 +12,7 @@ class UnitsController < ApplicationController
   # GET /units/1
   # GET /units/1.json
   def show
+    @budget_item = BudgetItem.new
   end
 
   # GET /units/new
@@ -25,15 +27,15 @@ class UnitsController < ApplicationController
   # POST /units
   # POST /units.json
   def create
-    @unit = Unit.new(unit_params)
+    @unit = @property.units.create(unit_params)
 
     respond_to do |format|
       if @unit.save
-        format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
-        format.json { render :show, status: :created, location: @unit }
+        format.html { redirect_to property_path(@property), notice: 'Unit was successfully created.' }
+        
       else
-        format.html { render :new }
-        format.json { render json: @unit.errors, status: :unprocessable_entity }
+        format.html { redirect_to property_path(@property) }
+        
       end
     end
   end
@@ -63,6 +65,9 @@ class UnitsController < ApplicationController
   end
 
   private
+    def set_property
+      @property = Property.find(params[:property_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_unit
       @unit = Unit.find(params[:id])
