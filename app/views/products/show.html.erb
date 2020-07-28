@@ -1,34 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<div class="max-w-4xl px-10 pt-10 pb-24 mx-auto mt-10 bg-white border rounded shadow-lg">
+  <div class="flex flex-wrap items-center justify-between">
+    <h1 class="mb-4 text-4xl font-bold">
+      <%= @product.name %>
+    </h1>
+  </div>
 
-<p>
-  <strong>Unit:</strong>
-  <%= @product.unit %>
-</p>
+  <div class="text-lg font-light leading-relaxed text-gray-600">
+    <p class="font-bold text-gray-900"><%= @product.unit %></p>
+    <p class="font-bold text-gray-900"><%= @product.price %></p>
+    <p class="font-bold text-gray-900"><%= @product.vendor %></p>
+    <p class="font-bold text-gray-900"><%= @product.description %></p>
+    <p class="font-bold text-gray-900"><%= @product.category.name %></p>
+  </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Vendor:</strong>
-  <%= @product.vendor %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category_id %>
-</p>
+  
+</div>
+<br/>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

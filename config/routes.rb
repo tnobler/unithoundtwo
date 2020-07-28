@@ -1,11 +1,15 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get '/products/search', to: 'products#search'
   resources :products
+  
+  
   resources :budget_item_lists
   resources :properties do
     resources :units do 
-      resources :budget_items
+      resources :budget_items do         
+      end
     end
   end
 

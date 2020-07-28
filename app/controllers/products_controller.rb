@@ -1,15 +1,23 @@
 class ProductsController < ApplicationController
+  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
   end
+  
+  def search
+    @products = Product.where("name like ?", "%#{params[:q]}%")
+    render layout: false
+  end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @categories = Category.all
   end
 
   # GET /products/new
@@ -66,6 +74,7 @@ class ProductsController < ApplicationController
     def set_product
       @product = Product.find(params[:id])
     end
+
 
     # Only allow a list of trusted parameters through.
     def product_params

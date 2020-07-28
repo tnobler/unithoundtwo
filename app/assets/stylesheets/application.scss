@@ -1,0 +1,15 @@
+ul.autocomplete {
+  list-style-type: none;
+  border: 1px black solid;
+}
+
+.autocomplete li {
+  display: relative;
+  max-width: 600px;
+  list-style: none;
+  padding: 10px;
+}
+
+.autocomplete li:hover {
+  background-color: cyan;
+}

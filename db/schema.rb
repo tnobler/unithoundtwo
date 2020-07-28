@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2020_07_24_220049) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "complete", default: false
     t.bigint "unit_id", null: false
-    t.string "product"
     t.bigint "property_id"
     t.index ["product_id"], name: "index_budget_items_on_product_id"
     t.index ["property_id"], name: "index_budget_items_on_property_id"

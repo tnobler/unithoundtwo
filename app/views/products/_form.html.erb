@@ -11,37 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-6">
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :unit %>
-    <%= form.text_field :unit %>
+  <div class="mb-6">
+    <%= form.label :unit, "Unit of Measure", class: "label" %>
+    <%= form.text_field :unit, placeholder: "Box, each, dozen, package...", class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
+  <div class="mb-6">
+    <%= form.label :price, class: "label" %>
+    <%= form.text_field :price, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :vendor %>
-    <%= form.text_field :vendor %>
+  <div class="mb-6">
+    <%= form.label :vendor, class: "label" %>
+    <%= form.text_field :vendor, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="mb-6">
+    <%= form.label :description, class: "label" %>
+    <%= form.text_area :description, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+  <div class="mb-6">
+    <%= form.label :category_id, class: "label" %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, class: "mb-6" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+  <div class="actions mb-6">
+    <%= form.submit class: "btn btn-default" %>
   </div>
 <% end %>

@@ -13,6 +13,7 @@ class UnitsController < ApplicationController
   # GET /units/1.json
   def show
     @budget_item = BudgetItem.new
+    @products = Product.where("name like ?", "%#{params[:q]}%")
   end
 
   # GET /units/new
@@ -75,6 +76,6 @@ class UnitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def unit_params
-      params.require(:unit).permit(:number, :sqft, :beds, :baths, :floor_plan, :property_id)
+      params.require(:unit).permit(:number, :sqft, :beds, :baths, :floor_plan, :property_id, :products)
     end
 end

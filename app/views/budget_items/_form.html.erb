@@ -12,9 +12,13 @@
   <% end %>
 
   <div class="flex">
-    <div class="w-3/12 mb-6">
-      <%= form.label :product, "Add a Budget Item", class: "label" %>
-      <%= form.text_field :product, placeholder:"Add Product...", class: "input" %>
+    <div class="w-6/12 mb-6">
+      <%= form.label :product_id, "Add a Budget Item", class: "label" %>
+      <%= content_tag :div, data: { controller: 'autocomplete', "autocomplete-url": '/products/search' } do %>
+        <%= text_field_tag :product, budget_item.product_name, data: { target: 'autocomplete.input' }, class: 'input' %>
+        <%= form.hidden_field :product_id, data: { target: 'autocomplete.hidden' } %>
+        <%= tag :ul, data: { target: 'autocomplete.results' }, class: 'autocomplete' %>
+      <% end %>
     </div>
 
     <div class="w-3/12 mb-6">

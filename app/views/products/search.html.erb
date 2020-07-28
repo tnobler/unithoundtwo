@@ -1,0 +1,7 @@
+<% @products.each do |product| %>
+  <%= content_tag :li, role: :option, data: { 'autocomplete-value': product.id } do %>
+    <%= product.name %> |
+    $<%= product.price %>/<%= product.unit %> |
+    <%= truncate(product.description, length: 25) %>
+  <% end %>
+<% end %>
