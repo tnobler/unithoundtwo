@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
   
   def search
-    @products = Product.where("name like ?", "%#{params[:q]}%")
+    @products = Product.where("name ILIKE ?", "%#{params[:q]}%")
     render layout: false
   end
 

@@ -21,7 +21,7 @@
   <ul class="mb-6 leading-relaxed">
     <% @unit.budget_items.each do |item| %>
       <%= check_box_tag "complete", item.complete %>
-      <%#= item.product %>
+      <%#= item.product.name %>
       <%= item.qty %>
     <% end %>
   </ul>

@@ -78,6 +78,6 @@ class BudgetItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def budget_item_params
-      params.require(:budget_item).permit(:qty, :budget_item_id, :product_id)
+      params.require(:budget_item).permit(:qty, :budget_item_id, :product_id, :property_id)
     end
 end
