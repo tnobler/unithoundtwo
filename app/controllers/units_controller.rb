@@ -13,7 +13,8 @@ class UnitsController < ApplicationController
   # GET /units/1.json
   def show
     @budget_item = BudgetItem.new
-    @products = Product.where("name like ?", "%#{params[:q]}%")
+    @budget_items = @unit.budget_items.all
+    @products = @budget_item.product
   end
 
   # GET /units/new

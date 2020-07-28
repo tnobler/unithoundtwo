@@ -17,6 +17,8 @@
       <%= content_tag :div, data: { controller: 'autocomplete', "autocomplete-url": '/products/search' } do %>
         <%= text_field_tag :product, budget_item.product_name, data: { target: 'autocomplete.input' }, placeholder:"Search products...", class: 'input' %>
         <%= form.hidden_field :product_id, data: { target: 'autocomplete.hidden' } %>
+        <%= form.hidden_field :property_id, :value => @property.id, data: { target: 'autocomplete.hidden' } %>
+        <%= form.hidden_field :unit_id, :value => @unit.id, data: { target: 'autocomplete.hidden' } %>
         <%= tag :ul, data: { target: 'autocomplete.results' }, class: 'autocomplete' %>
       <% end %>
     </div>

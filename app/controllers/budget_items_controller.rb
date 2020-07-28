@@ -34,7 +34,7 @@ class BudgetItemsController < ApplicationController
         format.html { redirect_to property_unit_url(:property_id => @property.id, :id => @unit.id), notice: 'Budget item was successfully created.' }
         
       else
-        format.html { redirect_to property_unit_path(@unit) }
+        format.html { redirect_to property_unit_url(:property_id => @property.id, :id => @unit.id), alert: 'Budget item was NOT created.' }
         
       end
     end
@@ -48,7 +48,7 @@ class BudgetItemsController < ApplicationController
         format.html { redirect_to unit_path(@unit), notice: 'Budget item was successfully updated.' }
         
       else
-        format.html { redirect_to unit_path(@unit) }
+        format.html { redirect_to unit_path(@unit), notice: 'Budget item was NOT updated.' }
         
       end
     end
@@ -78,6 +78,6 @@ class BudgetItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def budget_item_params
-      params.require(:budget_item).permit(:qty, :budget_item_id, :product_id, :property_id)
+      params.require(:budget_item).permit(:qty, :budget_item_id, :product_id, :unit_id, :property_id)
     end
 end
