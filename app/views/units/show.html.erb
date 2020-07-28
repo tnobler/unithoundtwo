@@ -19,46 +19,37 @@
   <%= render "budget_items/form", budget_item: @budget_item %>
 
   <ul class="mb-6 leading-relaxed">
-    <% @unit.budget_items.each do |item| %>
-      <%= check_box_tag "complete", item.complete %>
-      <%= item.product_name %>
-      <%= item.product.description %>
-      <%= item.qty %>
-    <% end %>
+    
+      <table class="table-auto">
+        <thead>
+          <th class="px-4 py-2">Complete?</th>
+          <th class="px-4 py-2">Product</th>
+          <th class="px-4 py-2">Description</th>
+          <th class="px-4 py-2">Qty</th>
+          <th class="px-4 py-2">Units</th>
+          <th class="px-4 py-2">Price/Unit</th>
+          <th class="px-4 py-2">Extended Price</th>
+        </thead>
+
+        <tbody>
+          <% @unit.budget_items.each do |item| %>
+            <tr>
+              <td class="border px-4 py-2 text-center"><%= check_box_tag "complete", item.complete %></td>
+              <td class="border px-4 py-2"><%= item.product_name %></td>
+              <td class="border px-4 py-2"><%= item.product.description %></td>
+              <td class="border px-4 py-2"><%= item.qty %></td>
+              <td class="border px-4 py-2"><%= item.product.base_unit %></td>
+              <td class="border px-4 py-2">$<%= item.product.price %></td>
+              <td class="border px-4 py-2">$<%= item.product.price * item.qty %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
   </ul>
 
 </div>
 
 
-<p>
-  <strong>Number:</strong>
-  <%= @unit.number %>
-</p>
 
-<p>
-  <strong>Sqft:</strong>
-  <%= @unit.sqft %>
-</p>
-
-<p>
-  <strong>Beds:</strong>
-  <%= @unit.beds %>
-</p>
-
-<p>
-  <strong>Baths:</strong>
-  <%= @unit.baths %>
-</p>
-
-<p>
-  <strong>Floor plan:</strong>
-  <%= @unit.floor_plan %>
-</p>
-
-<p>
-  <strong>Property:</strong>
-  <%= @unit.property_id %>
-</p>
-
-<%#= link_to 'Edit', edit_unit_path(@unit) %> |
+<%#= link_to 'Edit', edit_unit_path(@unit) %> 
 <%#= link_to 'Back', units_path %>
