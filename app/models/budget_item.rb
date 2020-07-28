@@ -1,8 +1,7 @@
 class BudgetItem < ApplicationRecord
-  # belongs_to :product
-  has_one :product
   belongs_to :unit
   belongs_to :property
+  belongs_to :product
   
 
   delegate :name, to: :product, prefix: true, allow_nil: true

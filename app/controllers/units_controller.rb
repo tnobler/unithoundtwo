@@ -14,7 +14,7 @@ class UnitsController < ApplicationController
   def show
     @budget_item = BudgetItem.new
     @budget_items = @unit.budget_items.all
-    @products = @budget_item.product
+    # @products = @budget_item.products
   end
 
   # GET /units/new
