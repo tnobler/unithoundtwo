@@ -7,6 +7,7 @@
           <p class="mb-1 leading-snug text-gray-600"><%= unit.beds %> Beds</p>
           <p class="mb-1 leading-snug text-gray-600"><%= unit.baths %> Baths</p>
           <p class="mb-1 leading-snug text-gray-600">Floor Plan: <%= unit.floor_plan %></p>
+          <p class="mb-1 leading-snug text-gray-600">Budget: <%= number_to_currency(unit.budget) %></p>
         <% end %>
       </div>
     <% end %>
